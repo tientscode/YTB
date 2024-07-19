@@ -1,0 +1,54 @@
+<div   th:fragment="nav-top">
+
+    <div class="mt-2 mx-auto" style="width: 500px">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="container mt-3 ">
+        <div class="category-bar row">
+
+           <div class="col-1">
+               <button id="prevBtn" class="btn btn-outline-secondary ">
+                   <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                             d="m15 19-7-7 7-7"/>
+                   </svg>
+               </button>
+           </div>
+
+            <div id="categories" class="col-10">
+                <button class="btn btn-outline-secondary">Tất cả</button>
+                <button class="btn btn-outline-secondary">Trò chơi</button>
+                <button class="btn btn-outline-secondary">Âm nhạc</button>
+                <button class="btn btn-outline-secondary">Trực tiếp</button>
+                <button class="btn btn-outline-secondary">Roblox</button>
+                <button class="btn btn-outline-secondary">Họat hình</button>
+                <button class="btn btn-outline-secondary">Du lịch</button>
+                <button class="btn btn-outline-secondary">Đọc rap</button>
+                <button class="btn btn-outline-secondary">Sách</button>
+                <button class="btn btn-outline-secondary">Khoa học</button>
+                <button class="btn btn-outline-secondary">Thể thao</button>
+                <button class="btn btn-outline-secondary">Phim</button>
+                <button class="btn btn-outline-secondary">Vlog</button>
+                <button class="btn btn-outline-secondary">Hài</button>
+                <button class="btn btn-outline-secondary">Giáo dục</button>
+                <button class="btn btn-outline-secondary">Khám phá</button>
+            </div>
+
+
+          <div class="col-1">
+              <button id="nextBtn" class="btn btn-outline-secondary">
+                  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                       xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m9 5 7 7-7 7"/>
+                  </svg>
+              </button>
+          </div>
+
+        </div>
+    </div>
+</div>

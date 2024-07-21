@@ -1,25 +1,14 @@
 <div   th:fragment="nav-top">
-
-    <div class="mt-2 mx-auto" style="width: 500px">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
-    <div class="container mt-3 ">
-        <div class="category-bar row">
-
-           <div class="col-1">
-               <button id="prevBtn" class="btn btn-outline-secondary ">
-                   <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                             d="m15 19-7-7 7-7"/>
-                   </svg>
-               </button>
-           </div>
-
-            <div id="categories" class="col-10">
+    <div class="d-flex  justify-content-center category " >
+        <div class="d-flex justify-content-center">
+            <button id="prevBtn" class="btn btn-rounder-button " style="margin-right: 10px">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m15 19-7-7 7-7"/>
+                </svg>
+            </button>
+            <div id="categories" >
                 <button class="btn btn-outline-secondary">Tất cả</button>
                 <button class="btn btn-outline-secondary">Trò chơi</button>
                 <button class="btn btn-outline-secondary">Âm nhạc</button>
@@ -37,18 +26,13 @@
                 <button class="btn btn-outline-secondary">Giáo dục</button>
                 <button class="btn btn-outline-secondary">Khám phá</button>
             </div>
-
-
-          <div class="col-1">
-              <button id="nextBtn" class="btn btn-outline-secondary">
-                  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                       xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m9 5 7 7-7 7"/>
-                  </svg>
-              </button>
-          </div>
-
+            <button id="nextBtn" class="btn btn-rounder-button">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white"
+                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m9 5 7 7-7 7"/>
+                </svg>
+            </button>
         </div>
     </div>
 </div>

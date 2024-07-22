@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.thymeleaf.org"
+      layout:decorate="~{Login-layout}" xmlns:sec>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<section>
+    <div layout:fragment="content">
+
+        <div class="login-box">
+            <form action="/sendmail" method="post" th:if="${session.otp}==null">
+                <div  class="user-box">
+                    <input type="text" id="sendtomail" name="email" required="">
+                    <label for="sendtomail">Email hoặc tên người dùng</label>
+                </div>
+                <center>
+                    <button type="submit">SEND EMAIL <span></span> </button>
+                </center>
+            </form>
+            <form  th:if="${session.otp}!=null" action="/sendotp" method="post">
+                <div style="text-align: center" class="user-box">
+                    <input style="  width: 2.5em; height: 2.5em;" type="password"  name="otp1" maxlength="1">
+                    <input style="  width: 2.5em; height: 2.5em;" type="password"  name="otp2" maxlength="1">
+                    <input style="  width: 2.5em; height: 2.5em;" type="password"  name="otp3" maxlength="1">
+                    <input style="  width: 2.5em; height: 2.5em;" type="password"  name="otp4" maxlength="1">
+                </div>
+                <center>
+                    <button type="submit">SEND OTP<span></span></button>
+                </center>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

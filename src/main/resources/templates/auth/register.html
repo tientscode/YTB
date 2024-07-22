@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.thymeleaf.org"
+      layout:decorate="~{Login-layout}" xmlns:sec>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+</head>
+<body>
+<section>
+  <div layout:fragment="content">
+    <div class="login-box">
+
+      <form action="/register/save" th:object="${sv}"  method="post">
+
+        <!-- Name input -->
+        <div th:text="${message}" class="error"></div>
+        <div class="user-box">
+
+          <input id="username" type="text" th:field="*{name}" required=""/>
+          <label for="username" >Tên Hiển Thị:</label>
+          <span  th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+        </div>
+
+        <!-- Username input -->
+        <div class="user-box">
+
+          <input type="text" th:field="*{account}" required=""/>
+          <label>Tài khoản:</label>
+          <span th:if="${#fields.hasErrors('account')}" th:errors="*{account}" class="error"></span>
+        </div>
+
+        <!-- Email input -->
+        <div class="user-box">
+
+          <input type="text" th:field="*{email}" required=""/>
+          <label>Email:</label>
+          <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
+
+        </div>
+
+        <!-- Password input -->
+        <div class="user-box">
+
+          <input type="password" th:field="*{password}" required=""/>
+          <label>Mật Khẩu:</label>
+          <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
+        </div>
+
+        <center>
+          <button type="submit">Đăng ký <span></span></button> <br>
+          <a href="/login">Đã có tài khoản? Đăng nhập ngay</a><br>
+          <a href="/"></a>
+        </center>
+      </form>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,5 +1,5 @@
 body {
-    background-color: red;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -16,8 +16,28 @@ body {
     right: 0;
     height: 54px;
     background-color: #ffffff;
-    z-index: 1030;
+    z-index: 1020;
 
+}
+
+
+.information{
+    position: fixed;
+    top: 15px;
+    margin-right: 70px;
+    right: 0;
+    width:250px;
+    height: calc(100vh - 25px);
+    z-index: 1030;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow-y: auto;
+    box-shadow:0 4px 8px #606060;
+    display: none;
+}
+
+.information a{
+    color: #030303;
 }
 
 .category {
@@ -65,11 +85,11 @@ body {
     position: fixed;
     top: 54px;
     left: 0;
-    width: 200px;
+    width: 220px;
     height: calc(100% - 60px);
     background-color: #f8f9fa;
-    /*overflow-y: auto;*/
-    z-index: 1030;
+    overflow-y: auto;
+    z-index: 1010;
     padding-top: 10px;
 }
 
@@ -82,13 +102,10 @@ body {
 .sidebar li .active-v{
     background-color: #f2f2f2;
 }
-.sidebar li svg {
-    margin-right: 10px; /* Khoảng cách giữa SVG và văn bản */
-}
 
 .content {
     margin-top: 60px;
-    margin-left: 200px;
+    margin-left: 220px;
     padding: 20px;
 }
 

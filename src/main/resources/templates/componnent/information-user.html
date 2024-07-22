@@ -1,0 +1,62 @@
+<div th:fragment="information-user">
+    <div class="information">
+        <div class="my-2 d-flex flex-row align-items-center gap-3">
+            <div class="mx-2 item-image-author">
+                <img class="rounded-circle" src="/images/truyen3.jpg" alt="Author Image">
+            </div>
+            <div>
+                <span th:if="${session.user != null}" th:text="${session.user.name}"></span>
+                <span th:if="${session.user == null}">Tài Khoản</span>
+                <br>
+                <a href="#" class="nav-link">Your channel</a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <ul class="nav nav-pills flex-column mb-auto m-2 gap-2" style="font-size: 20px">
+                <li class="nav-item" style="border: none;">
+                    <a class="nav-link" href="/login">
+                        <i class='bx bx-log-in'></i>
+                        Login
+                    </a>
+                </li>
+                <li class="nav-item" style="border: none;">
+                    <a class="nav-link" href="/logout"><i class='bx bx-log-out'></i> Logout</a>
+                </li>
+                <li class="nav-item" style="border: none;">
+
+                    <a class="nav-link" href="#"><i class='bx bx-moon'></i>
+                        Themme
+                    </a>
+                </li>
+                <li class="nav-item" style="border: none;">
+                    <a class="nav-link" href="/login">
+                        <i class='bx bx-world'></i>
+                        Language
+                    </a>
+                </li>
+                <hr>
+                <li class="nav-item" style="border: none;">
+                    <a class="nav-link" href="/login">
+                        <i class='bx bx-cog' ></i>
+                        Setting
+                    </a>
+                </li>
+                <li class="nav-item" style="border: none;">
+                    <a class="nav-link" href="/login">
+                        <i class='bx bx-help-circle' ></i>
+                        Help
+                    </a>
+                </li>
+                <li class="nav-item" style="border: none;">
+                    <a class="nav-link" href="/login">
+                        <i class='bx bx-message-error'></i>
+                        Send feedblack
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>

@@ -10,4 +10,5 @@ public interface VideoRepository extends JpaRepository<Videos,Long> {
     List<Videos> getAllBy();
     Videos save(Videos video);
 
+
 }

@@ -5,33 +5,33 @@ import lombok.*;
 
 import java.util.Set;
 
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name="user")
+@Table(name = "user")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false, unique = true)
     private String email;
+
     @Column(nullable = false)
     private String password;
+
     @Column(nullable = false)
     private Boolean active;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_video",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "video_id")
-    )
-    private Set<Videos> videos;
+    private String image;
 
+    @OneToMany(mappedBy = "user")
+    private Set<Videos> videos;
 }

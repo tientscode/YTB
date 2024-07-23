@@ -13,8 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class HomeController {
@@ -27,23 +26,17 @@ public class HomeController {
 
     @RequestMapping("home")
     public String home(Model model) {
-        List<Videos> video = videoquery.getAllBy();
+        List<Videos> video = videoquery.findAll();
         model.addAttribute("listvideo", video);
-        for (Videos v : video) {
-            Set<Users> usersSet = v.getUsers(); // Lấy tập hợp người dùng từ video
-            if (usersSet != null) {
-                for (Users user : usersSet) {
-                    System.out.println(user.getName());
-                }
-            }
-        }
+
         return "Main-Layout";
     }
 
-    @GetMapping("login")
+    @GetMapping("/login")
     public String login() {
         return "auth/login";
     }
+
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model, HttpServletResponse response) {
@@ -82,9 +75,23 @@ public class HomeController {
             video.setCreatedAt(LocalDateTime.now());
         }
         video.setActive(true);
+        Users loggedInUser = session.get("user");
+        video.setUser(loggedInUser);
         videoquery.save(video);
         model.addAttribute("report", "Create video success");
         return "redirect:/home";
     }
+
+    @GetMapping("/watch")
+    // required là dùng để cho phép giá trị đường dẫn là v được phép null không false là có true là không
+    public String watch(@RequestParam(value = "v", required = false) String videoId, Model model) {
+        if (videoId == null) {
+            return "redirect:/home"; // xử lý nếu video = v = null
+        }
+        System.out.println("v = " + videoId);
+        model.addAttribute("videoId", videoId);
+        return "Main-Layout";
+    }
+
 
 }

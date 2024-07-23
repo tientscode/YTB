@@ -2,9 +2,7 @@ package com.tscocde.YTB.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import com.tscocde.YTB.Entity.video;
 
-import java.util.List;
 import java.util.Set;
 
 
@@ -34,5 +32,6 @@ public class Users {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "video_id")
     )
-    private Set<video> videos;
+    private Set<Videos> videos;
+
 }

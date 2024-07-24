@@ -1,12 +1,10 @@
-package com.tscocde.YTB;
+package com.tscocde.YTB.Controller;
 
 import com.tscocde.YTB.Entity.Users;
 import com.tscocde.YTB.Entity.Videos;
 import com.tscocde.YTB.Repository.UserRepository;
 import com.tscocde.YTB.Repository.VideoRepository;
 import com.tscocde.YTB.Service.SessionService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +16,7 @@ import java.util.*;
 
 @Controller
 public class HomeController {
-    @Autowired
-    UserRepository userquery;
+
     @Autowired
     SessionService session;
     @Autowired
@@ -28,33 +25,12 @@ public class HomeController {
     @RequestMapping("home")
     public String home(Model model) {
         List<Videos> video = videoquery.findAll();
-        model.addAttribute("listvideo", video);
+        session.set("listvideo", video);
 
         return "componnent/video-homepage";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "auth/login";
-    }
 
-    @GetMapping("/register")
-    public String register(Model model) {
-        Users user = new Users();
-        model.addAttribute("user", user);
-        return "auth/register";
-    }
-
-    @PostMapping("/register/save")
-    public String register_save(@ModelAttribute Users user,RedirectAttributes redirectAttributes) {
-        user.setActive(true);
-        if (user.getImage() == null) {
-            user.setImage("user.png");
-        }
-        redirectAttributes.addFlashAttribute("error", "Đăng ký Thành Công");
-        userquery.save(user);
-        return "redirect:/login";
-    }
 
     @GetMapping("/send/mail")
     public String send_mail(Model model) {
@@ -103,29 +79,7 @@ public class HomeController {
 //        }
 //    }
 
-    @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password, Model model) {
-        // Kiểm tra username và password trong cơ sở dữ liệu
-        Users user = userquery.findByUsername(username);
-        System.out.println("là gì đây" + user);
-        if (user != null && user.getPassword().equals(password)) {
-            if (user.getActive()) {
-                session.set("user", user);
-                return "redirect:/home";
-            } else {
-                model.addAttribute("error", "My account is locked !");
-            }
-        } else {
-            model.addAttribute("error", "Invalid username or password!");
-        }
-        return "auth/login";
-    }
 
-    @GetMapping("/logout")
-    public String logout() {
-        session.remove("user");
-        return "redirect:/home";
-    }
 
     @GetMapping("/create-video")
     public String createVideo(Model model) {
@@ -147,16 +101,8 @@ public class HomeController {
         return "redirect:/home";
     }
 
-    @GetMapping("/watch")
-    // required là dùng để cho phép giá trị đường dẫn là v được phép null không false là có true là không
-    public String watch(@RequestParam(value = "v", required = false) String videoId, Model model) {
-        if (videoId == null) {
-            return "redirect:/home"; // xử lý nếu video = v = null
-        }
-        System.out.println("v = " + videoId);
-        model.addAttribute("videoId", videoId);
-        return "Main-Layout";
-    }
+
+
 
 
 }

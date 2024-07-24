@@ -42,45 +42,6 @@
     <!--    <div th:replace="/componnent/video-homepage ::video-homepage"></div>-->
     <section layout:fragment="content"></section>
 </div>
-<script>
 
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const categories = document.getElementById('categories');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const categoryButtons = categories.querySelectorAll('.btn');
-        const visibleCount = 14;
-        let startIndex = 0;
-
-        function updateVisibility() {
-            categoryButtons.forEach((btn, index) => {
-                btn.classList.add('hidden');
-                if (index >= startIndex && index < startIndex + visibleCount) {
-                    btn.classList.remove('hidden');
-                }
-            });
-
-            prevBtn.disabled = startIndex === 0;
-            nextBtn.disabled = startIndex + visibleCount >= categoryButtons.length;
-        }
-
-        prevBtn.addEventListener('click', () => {
-            if (startIndex > 0) {
-                startIndex--;
-                updateVisibility();
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (startIndex + visibleCount < categoryButtons.length) {
-                startIndex++;
-                updateVisibility();
-            }
-        });
-
-        // Initialize visibility
-        updateVisibility();
-    });
-</script>
 </body>
 </html>

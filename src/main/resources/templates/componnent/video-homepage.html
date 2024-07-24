@@ -13,9 +13,9 @@
     <div layout:fragment="content">
         <div class="row " style="margin-top: 60px">
             <div class="col-md-4 col-sm-6 col-12 " style="margin-bottom: 120px; height: 10000px"
-                 th:each="video :${listvideo}">
+                 th:each="video :${session.listvideo}">
                 <div class="mb-2">
-                    <a class="nav-link" th:href="@{https://www.youtube.com/watch(v=${video.url})}" target="_blank">
+                    <a class="nav-link" th:href="@{/watch(v=${video.url})}" >
                         <img style="width: 100%; height: 220px" class="rounded" th:src="'/images/' + ${video.image}"
                              alt="">
                     </a>
@@ -27,13 +27,13 @@
                         </a>
                     </div>
                     <div class="col-10 mx-2">
-                        <a class="nav-link" th:href="@{https://www.youtube.com/watch(v=${video.url})}" target="_blank">
+                        <a class="nav-link" th:href="@{/watch(v=${video.url})}" >
                             <span class="video-title"><strong th:text="${video.title}"></strong></span>
                         </a>
                         <a class="nav-link" href="">
                             <span th:text="${video.user.name}">Tác giả</span>
                         </a>
-                        <a class="nav-link" th:href="@{https://www.youtube.com/watch(v=${video.url})}" target="_blank">
+                        <a class="nav-link" th:href="@{/watch(v=${video.url})}" >
                             <span>Lượt xem * thời gian</span>
                         </a>
                     </div>

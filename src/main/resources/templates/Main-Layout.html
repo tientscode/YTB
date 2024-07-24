@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,8 +38,9 @@
 <div class="content">
     <!--danh mục cố định-->
     <!--    <div th:replace="componnent/nav-top :: nav-top"></div>-->
-<!-- video-homepage -->
-<div th:replace="/componnent/video-homepage ::video-homepage"></div>
+    <!-- video-homepage -->
+    <!--    <div th:replace="/componnent/video-homepage ::video-homepage"></div>-->
+    <section layout:fragment="content"></section>
 </div>
 <script>
 

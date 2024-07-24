@@ -11,7 +11,7 @@
 <section>
     <div layout:fragment="content">
 
-        <div th:if="${error}!=null" class="info">
+        <div th:if="${error}" class="info" id="infoMessage">
             <div class="info__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none">
                     <path fill="#393a37"
@@ -41,7 +41,19 @@
             </form>
 
         </div>
+        <script>
+            // JavaScript để ẩn thông báo sau 5 giây
+            document.addEventListener("DOMContentLoaded", function () {
+                const infoMessage = document.getElementById("infoMessage");
+                if (infoMessage) {
+                    setTimeout(function () {
+                        infoMessage.style.display = "none";
+                    }, 5000); // 5 giây
+                }
+            });
+        </script>
     </div>
+
 </section>
 </body>
 </html>

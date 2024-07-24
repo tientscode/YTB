@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -29,7 +30,7 @@ public class HomeController {
         List<Videos> video = videoquery.findAll();
         model.addAttribute("listvideo", video);
 
-        return "Main-Layout";
+        return "componnent/video-homepage";
     }
 
     @GetMapping("/login")
@@ -37,9 +38,73 @@ public class HomeController {
         return "auth/login";
     }
 
+    @GetMapping("/register")
+    public String register(Model model) {
+        Users user = new Users();
+        model.addAttribute("user", user);
+        return "auth/register";
+    }
+
+    @PostMapping("/register/save")
+    public String register_save(@ModelAttribute Users user,RedirectAttributes redirectAttributes) {
+        user.setActive(true);
+        if (user.getImage() == null) {
+            user.setImage("user.png");
+        }
+        redirectAttributes.addFlashAttribute("error", "Đăng ký Thành Công");
+        userquery.save(user);
+        return "redirect:/login";
+    }
+
+    @GetMapping("/send/mail")
+    public String send_mail(Model model) {
+        return "auth/Sendmail_Otp";
+    }
+//    @PostMapping("/sendmail")
+//    public String demo(Model model, @RequestParam("email") String to) throws MessagingException {
+//        try {
+//            session.set("email", to);
+//            Random random = new Random();
+//            int randomNumber = 1000 + random.nextInt(9000); // Generates a random number between 1000 and 9999
+//            String body = "Your verification code is: " + randomNumber;
+//            mailer.queue(to,"Quên Mật Khẩu", body);
+//            System.out.println("thành công");
+//            session.set("otp", randomNumber);
+//        } catch (Exception e) {
+//            model.addAttribute("tb", "Email not find");
+//        }
+//        return "auth/Sendmail_Otp";
+//    }
+//
+//    @PostMapping("/sendotp")
+//    public String handleOTP(@RequestParam("otp1") String otp1,
+//                            @RequestParam("otp2") String otp2,
+//                            @RequestParam("otp3") String otp3,
+//                            @RequestParam("otp4") String otp4,
+//                            RedirectAttributes redirectAttributes) {
+//        String otpString = otp1 + otp2 + otp3 + otp4;
+//
+//        try {
+//            int otp = Integer.parseInt(otpString);
+//            int storedOtp = session.get("otp");
+//            if (otp == storedOtp) {
+//                String newPassword = RdPassNewUser.generateRandomPassword(8);
+//                String email = session.get("email"); // Assuming email is stored in session
+//                mailer.queue(email, "New Password", "Your new password is: " + newPassword);
+//                redirectAttributes.addFlashAttribute("message", "OTP is correct!");
+//                return "redirect:/login";
+//            } else {
+//                redirectAttributes.addFlashAttribute("message", "Invalid OTP!");
+//                return "redirect:/send/mail";
+//            }
+//        } catch (NumberFormatException e) {
+//            redirectAttributes.addFlashAttribute("message", "Invalid OTP format!");
+//            return "redirect:/send/mail";
+//        }
+//    }
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password, Model model, HttpServletResponse response) {
+    public String login(@RequestParam String username, @RequestParam String password, Model model) {
         // Kiểm tra username và password trong cơ sở dữ liệu
         Users user = userquery.findByUsername(username);
         System.out.println("là gì đây" + user);

@@ -2,7 +2,8 @@
     <div class="information">
         <div class="my-2 d-flex flex-row align-items-center gap-3">
             <div class="mx-2 item-image-author">
-                <img class="rounded-circle" src="/images/truyen3.jpg" alt="Author Image">
+                <img th:if="${session.user != null}" class="rounded-circle" th:src="'/images/'+ ${session.user.image}" alt="Author Image">
+                <img th:if="${session.user == null}" class="rounded-circle" src="/images/truyen3.jpg" alt="Author Image">
             </div>
             <div>
                 <span th:if="${session.user != null}" th:text="${session.user.name}"></span>
